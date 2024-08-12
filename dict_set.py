@@ -11,7 +11,6 @@ print(my_dict)
 #Множества
 my_set = {1, 'четыре', 2, 3, 3, 'четыре', 1, 5.0}
 print(my_set)
-my_set.add('пять')
-my_set.add(4)
+my_set.update(['пять', 4])
 my_set.discard(5.0)
 print(my_set)
