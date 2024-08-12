@@ -1,2 +1,2 @@
 Hello, world. Let's start coding.
-<img src="760LlQS.gif"/>
+<div class="image"><img src="760LlQS.gif"/></div>
