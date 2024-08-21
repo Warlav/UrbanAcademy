@@ -3,7 +3,6 @@ string = input('Введите пароль: ').lower()
 list_to_search = ['пароль', 'pass', 'password', 'passcode', 'secret']
 
 
-
 def count_calls():
   global calls
   calls += 1
