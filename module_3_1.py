@@ -25,3 +25,4 @@ def is_contains(string.lower, list_to_search):
 string_info(string)
 is_contains(string, list_to_search)
 print('Функций задействовано: ', calls)
+
