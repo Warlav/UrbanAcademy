@@ -20,5 +20,4 @@ def send_email(message, recipient, sender='university.help@gmail.com'):
       print(f'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ!\nПисьмо отправлено с адреса\n{sender}\nна адрес\n{recipient}.')
 
 
-print(letter)
 send_email(*letter)
