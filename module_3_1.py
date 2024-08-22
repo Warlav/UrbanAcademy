@@ -13,7 +13,7 @@ def string_info(string):
   print('Длина пароля: ', len(string))
 
 
-def is_contains(string.lower, list_to_search):
+def is_contains(string, list_to_search):
   count_calls()
   if string in list_to_search:
     print('Вход разрешён')
