@@ -1,6 +1,8 @@
 calls = 0
-string = input('Введите пароль: ').lower()
-list_to_search = ['пароль', 'pass', 'password', 'passcode', 'secret']
+str1 = 'uRBan'
+str2 = 'siSteR'
+checked_list1 = ['Urban', 'ban', 'BaNaN', 'urBAN']
+checked_list2 = ['Father', 'Mother', 'Sister', 'Brother']
 
 
 def count_calls():
@@ -10,18 +12,25 @@ def count_calls():
 
 def string_info(string):
   count_calls()
-  print('Длина пароля: ', len(string))
+  print(len(string), string.upper(), string.lower())
 
 
 def is_contains(string, list_to_search):
   count_calls()
-  if string in list_to_search:
-    print('Вход разрешён')
+  lst = []
+  for i in list_to_search:
+    if i.lower() == string.lower():
+      lst.append(i)
+  if len(lst) > 0:
+    return lst
   else:
-    print('Вход запрещён')
+    return 'Совпадений нет'
 
 
-string_info(string)
-is_contains(string, list_to_search)
+string_info(str1)
+string_info(str2)
+print(is_contains(str1, checked_list1))
+print(is_contains(str1, checked_list2))
+print(is_contains(str2, checked_list1))
+print(is_contains(str2, checked_list2))
 print('Функций задействовано: ', calls)
-
