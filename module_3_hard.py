@@ -23,5 +23,5 @@ def calculate_structure_sum(*data_structure):
   # ошибки кода.
   return sum
 
-result = calculate_structure_sum(*data_structure)
+result = calculate_structure_sum(data_structure)
 print(result)
