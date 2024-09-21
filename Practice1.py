@@ -18,9 +18,9 @@ class User:
     def __init__(self, username, password, password_confirm):
         self.username = username
         # check = True
-        # if len(password) <= 8:
+        # if len(password) < 8:
         #     check = False
-        #     print("Пароль должен быть более 8 символов")
+        #     print("Пароль должен быть более 7 символов")
         # for i in password:
         #     if isinstance(i, int):
         #         break
