@@ -1,43 +1,46 @@
 class UrTube:
-    def __init__(self, users, videos, current_user):
-        self.users = users
-        self.videos = videos
-        self.current_user = current_user
+    def __init__(self):
+        self.users = {}
+        self.videos = []
+        self.current_user = None
 
     def log_in(self, nickname, password):
-        if nickname in self.users:
-            current_user = nickname
+        if nickname in self.users.keys():
+            # if hash(password) in self.users.values[0]:
+                self.current_user = nickname
 
     def register(self, nickname, password, age):
-        list = []
-        if nickname not in list:
-            list.append(nickname)
+        if nickname not in self.users.keys():
+            self.users[nickname] = (password, age)
         else:
             print(f"Пользователь {nickname} уже существует")
-        return list
 
     def log_out(self):
-        self.users = None
+        self.current_user = None
 
-    def add(*Video):
+    def add(self, *Video):
         if Video not in self.videos:
             self.videos.append(Video)
 
     def get_videos(self, search_word):
         list = []
-        if search_word.upper() in self.videos.upper():
-            list.append(self.videos)
-            return list
+        for i in self.videos:
+            if i.upper() == search_word.upper():
+                list.append(i, "\n")
+        return list
 
     def watch_video(self, film_name):
-        if film_name in self.videos:
-            Video.time_now += 1
-            time.sleep(1)
+        for i in self.videos:
+            if i == film_name:
+               if User == self.current_user:
+                   Video.time_now += 1
+                   # time.sleep(1)
+                   print(Video().time_now)
 
 
 
 class Video:
-    def __init__(self, title, duration, time_now = 0, adult_mode = False):
+    def __init__(self, title, duration, time_now=0, adult_mode=False):
         self.title = title
         self.duration = duration
         self.time_now = time_now
@@ -58,8 +61,8 @@ v2 = Video('Для чего девушкам парень программист
 ur.add(v1, v2)
 
 # Проверка поиска
-print(ur.get_videos('лучший'))
-print(ur.get_videos('ПРОГ'))
+# print(ur.get_videos('лучший'))
+# print(ur.get_videos('ПРОГ'))
 
 # Проверка на вход пользователя и возрастное ограничение
 ur.watch_video('Для чего девушкам парень программист?')
