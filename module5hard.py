@@ -34,7 +34,7 @@ class UrTube:
         for i in self.users:
             list.append(i.nickname)
         if nickname not in list:
-           user = User(nickname, hash(password), age)
+           user = User(nickname, password, age)
            self.users.append(user)
            self.log_in(nickname, password)
         else:
