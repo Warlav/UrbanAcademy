@@ -5,7 +5,7 @@ class User:
         self.age = age
 
     def __str__(self):
-        return self.nickname
+        return f'{self.nickname}'
 
 class Video:
     def __init__(self, title, duration, time_now=0, adult_mode=False):
@@ -15,10 +15,7 @@ class Video:
         self.adult_mode = adult_mode
 
     def __str__(self):
-        return self.title
-
-    def __bool__(self):
-        return self.adult_mode
+        return f'{self.title}, {self.duration}, {self.adult_mode}'
 
 class UrTube:
     def __init__(self):
