@@ -14,13 +14,13 @@ class Ball(arcade.Sprite):
     def update(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
-        if self.right > SCREEN_WIDTH:
+        if self.right >= SCREEN_WIDTH:
             self.change_x = -self.change_x
-        if self.left < 0:
+        if self.left <= 0:
             self.change_x = -self.change_x
-        if self.top < 0:
+        if self.top >= SCREEN_HEIGT:
             self.change_y = -self.change_y
-        if self.top > SCREEN_HEIGT:
+        if self.bottom <= 0:
             self.change_y = -self.change_y
 
 
@@ -62,9 +62,9 @@ class Game(arcade.Window):
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.RIGHT:
-            self.bar.change_x = 5
+            self.bar.change_x = 7
         if symbol == arcade.key.LEFT:
-            self.bar.change_x = -5
+            self.bar.change_x = -7
 
     def on_key_release(self, symbol: int, modifiers: int):
         if symbol == arcade.key.RIGHT or symbol == arcade.key.LEFT:
