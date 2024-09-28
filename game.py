@@ -10,8 +10,13 @@ class Bar(arcade.Sprite):
 
 
 class Game(arcade.Window):
+    def __init__(self, width, height, title):
+        super().__init__(width, height, title)
+        self.bar = Bar()
+
     def on_draw(self):
         self.clear((255, 255, 255))
+        self.bar.draw()
 
 if __name__ == '__main__':
     window = Game(SCREEN_WIDTH, SCREEN_HEIGT, SCREEN_TITLE)
