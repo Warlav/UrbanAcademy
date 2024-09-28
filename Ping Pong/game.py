@@ -14,13 +14,13 @@ class Ball(arcade.Sprite):
     def update(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
-        if self.right >= SCREEN_WIDTH:
+        if self.right > SCREEN_WIDTH:
             self.change_x = -self.change_x
-        if self.left <= 0:
+        if self.left < 0:
             self.change_x = -self.change_x
-        if self.top <= 0:
+        if self.top < 0:
             self.change_y = -self.change_y
-        if self.top >= SCREEN_HEIGT:
+        if self.top > SCREEN_HEIGT:
             self.change_y = -self.change_y
 
 
