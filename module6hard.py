@@ -5,11 +5,11 @@ class Figure:
     sides_count = 0
 
     def __init__(self, __color: int, *__sides: int):
-        self.__color = []
-        self.__sides = []
+        self.__color = [*__color]
+        self.__sides = [*__sides]
         self.filled = True
         if len(__sides) == self.sides_count:
-            self.__sides = __sides
+            self.__sides = [*__sides]
         elif len(__sides) == 1:
             self.__sides = list(__sides * self.sides_count)
         else:
@@ -48,24 +48,22 @@ class Circle(Figure):
     sides_count = 1
 
     def __init__(self, __color, *__sides):
-        super().__init__(__color, *__sides)
-        self.__color = []
-        self.__sides = []
-        print(self.__sides)
+        self.__color = [*__color]
+        self.__sides = [*__sides]
         self.__radius = int(*self.__sides) / (2 * pi)
+        super().__init__(__color, *__sides)
 
     def get_square(self):
-        print(self.__radius)
-        return pi * self.__radius**2
+        return pi * self.__radius ** 2
 
 
 class Triangle(Figure):
     sides_count = 3
 
     def __init__(self, __color, *__sides):
+        self.__color = [*__color]
+        self.__sides = [*__sides]
         super().__init__(__color, *__sides)
-        self.__color = []
-        self.__sides = []
 
     def get_square(self):
         return ((self.sides_count ** 2) * (3 // 2)) / 4
@@ -75,13 +73,13 @@ class Cube(Figure):
     sides_count = 12
 
     def __init__(self, __color, *__sides):
-        self.__color = []
-        self.__sides = []
+        self.__color = [*__color]
+        self.__sides = list(__sides * self.sides_count)
         super().__init__(__color, *__sides)
 
     def get_volume(self):
         if len(self.__sides) > 0:
-            return self.__sides[0]**3
+            return self.__sides[0] ** 3
 
 
 circle1 = Circle((200, 200, 100), 10)  # (Цвет, стороны)
@@ -101,8 +99,6 @@ print(circle1.get_sides())
 
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
-
-print(circle1.get_square())
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
