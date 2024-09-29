@@ -15,7 +15,6 @@ class Figure:
         else:
             for i in range(self.sides_count):
                 self.__sides.append(1)
-        super().__init__()
 
     def get_color(self):
         return self.__color
