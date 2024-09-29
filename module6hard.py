@@ -51,10 +51,12 @@ class Circle(Figure):
         super().__init__(__color, *__sides)
         self.__color = []
         self.__sides = []
+        print(self.__sides)
         self.__radius = int(*self.__sides) / (2 * pi)
 
     def get_square(self):
-        return pi * self.__radius ** 2
+        print(self.__radius)
+        return pi * self.__radius**2
 
 
 class Triangle(Figure):
@@ -99,6 +101,8 @@ print(circle1.get_sides())
 
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
+
+print(circle1.get_square())
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
