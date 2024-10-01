@@ -1,16 +1,14 @@
 class WordsFinder:
     def __init__(self, *names):
-        self.__file_index = 1
-        self.file_names = []
-        self.file_names.append(*names)
-        file = open('file{self.__file_index}.txt', encoding='utf-8')
-        file.close()
-        self.__file_index += 1
-        
+        self.file_names = [*names]
+        with open(self, encoding='utf-8') as file:
+            for name in names:
+
+
 
     def get_all_words(self):
-        all_word = {}
-        all_word[self] = [*open(self)]
+        dict_ = {}
+        dict_[self] = [*open(self)]
 
 
 
