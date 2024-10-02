@@ -3,7 +3,7 @@ class WordsFinder:
         self.__file_index = 1
         self.file_names = []
         self.file_names.append(*names)
-        file = open('file{self.__file_index}.txt', encoding='utf-8')
+        file = open(f'file{self.__file_index}.txt', 'x', encoding='utf-8')
         file.close()
         self.__file_index += 1
         
