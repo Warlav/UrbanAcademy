@@ -19,7 +19,7 @@ class WordsFinder:
                 all_words[name] = [words]
 
     def find(self, word):
-        return {key: word}
+        return
 
 
 finder2 = WordsFinder('test_file.txt')
