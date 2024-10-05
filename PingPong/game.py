@@ -7,7 +7,7 @@ SCREEN_TITLE = 'Pong Game'
 
 class Ball(arcade.Sprite):
     def __init__(self):
-        super().__init__('ball.png', 0.01)
+        super().__init__('PingPong/ball.png', 0.01)
         self.change_x = 4
         self.change_y = 4
 
@@ -26,7 +26,7 @@ class Ball(arcade.Sprite):
 
 class Bar(arcade.Sprite):
     def __init__(self):
-        super().__init__('bar.png', 0.1)
+        super().__init__('PingPong/bar.png', 0.1)
 
     def update(self):
         self.center_x += self.change_x
