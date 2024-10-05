@@ -6,6 +6,7 @@ team1_time = 1552.512
 team2_time = 2153.31451
 tasks_total = score_1 + score_2
 time_avg = round((team1_time + team2_time) / tasks_total, 1)
+
 if score_1 > score_2 or score_1 == score_2 and team1_time > team2_time:
     challenge_result = 'Победа команды Мастера кода!'
 elif score_1 < score_2 or score_1 == score_2 and team1_time < team2_time:
