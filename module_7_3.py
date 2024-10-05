@@ -18,20 +18,27 @@ class WordsFinder:
         return all_words
 
     def find(self, word):
-        for name, words in self.get_all_words().items():
-            for i in words:
-                if i == word.lower():
-                    return {name: words.index(i) + 1}
-            else:
-                return f'Слово не найдено'
+        find_dict = {}
+        for name in self.file_names:
+            for key, value in self.get_all_words().items():
+                for i in value:
+                    if i == word.lower():
+                        find_dict[key] = value.index(i) + 1
+        if len(find_dict) > 0:
+            return find_dict
+        else:
+            return f'Слово не найдено'
 
     def count(self, word):
-        count_ = 0
-        for name, words in self.get_all_words().items():
-            for i in words:
-                if i == word.lower():
-                    count_ += 1
-        return {name: count_}
+        count_dict = {}
+        for name in self.file_names:
+            for key, value in self.get_all_words().items():
+                count_ = 0
+                for i in value:
+                    if i == word.lower():
+                        count_ += 1
+                        count_dict[key] = count_
+        return count_dict
 
 
 finder2 = WordsFinder('test_file.txt')
