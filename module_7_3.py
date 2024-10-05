@@ -12,30 +12,32 @@ class WordsFinder:
             words = []
             with open(name, 'r', encoding='utf-8') as file:
                 for line in file:
-                    # line.split()
-                    for symbol in replace_symbols:
-                        line.replace(symbol, '')
+                    line = line.split()
                     for word in line:
-                        words.append(line.lower())
+                        for symbol in replace_symbols:
+                            word.replace(symbol, '')
+                        words.append(word.lower())
             all_words[name] = words
         return all_words
 
     def find(self, word):
         for name, words in self.get_all_words().items():
-            if word.lower() in words:
-                find_word = {name: words.index(word)}
-                return find_word
+            for i in words:
+                if i == word.lower():
+                    return {name: words.index(i) + 1}
+            else:
+                return f'Слово не найдено'
 
     def count(self, word):
         count_ = 0
         for name, words in self.get_all_words().items():
             for i in words:
-                if i == word:
+                if i == word.lower():
                     count_ += 1
         return {name: count_}
 
 
 finder2 = WordsFinder('test_file.txt')
 print(finder2.get_all_words())  # Все слова
-# print(finder2.find('TEXT'))  # 3 слово по счёту
-# print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
+print(finder2.find('TEXT'))  # 3 слово по счёту
+print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
