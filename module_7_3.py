@@ -15,7 +15,7 @@ class WordsFinder:
                     line = line.split()
                     for word in line:
                         for symbol in replace_symbols:
-                            word.replace(symbol, '')
+                            word = word.replace(symbol, '')
                         words.append(word.lower())
             all_words[name] = words
         return all_words
