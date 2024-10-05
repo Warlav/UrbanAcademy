@@ -1,14 +1,11 @@
 class WordsFinder:
     def __init__(self, *names):
-        self.names = names
-        self.file_names = []
-        for name in names:
-            self.file_names.append(name)
+        self.file_names = [*names]
 
     def get_all_words(self):
         all_words = {}
         replace_symbols = [',', '.', '=', '!', '?', ';', ':', ' - ']
-        for name in self.names:
+        for name in self.file_names:
             words = []
             with open(name, 'r', encoding='utf-8') as file:
                 for line in file:
