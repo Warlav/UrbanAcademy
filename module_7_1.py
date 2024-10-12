@@ -19,7 +19,7 @@ class Shop():
         return a
 
     def add(self, *products):
-        file = open(self.__file_name, '+r')
+        file = open(self.__file_name, 'r+')
         a = file.read()
         for product in products:
             if product.name not in a:
