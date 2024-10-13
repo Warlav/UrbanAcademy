@@ -1,11 +1,11 @@
 import os
 
 print(os.getcwd())
-if os.path.exists('../..'):
-    os.chdir('../..')
+if os.path.exists(''):
+    os.chdir('')
 else:
-    os.mkdir('../..')
-    os.chdir('../..')
+    os.mkdir('')
+    os.chdir('')
 print(os.getcwd())
 # os.makedirs(r'second\third')
 # for i in os.walk('.'):
