@@ -1,9 +1,9 @@
 import os
 import time
 
-root = '.'
+directory = '.'
 
-for root, dirs, files in os.walk(root):
+for root, dirs, files in os.walk(directory):
     for dir_ in dirs:
         for file in files:
             filepath = os.path.join(root, dir_, file)
