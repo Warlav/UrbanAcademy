@@ -4,13 +4,13 @@ import time
 root = '.'
 
 for root, dirs, files in os.walk(root):
-    for dir in dirs:
+    for dir_ in dirs:
         for file in files:
-            filepath = os.path.join(root, dir, file)
+            filepath = os.path.join(root, dir_, file)
             filetime = os.path.getmtime(file)
             formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
             filesize = os.path.getsize(file)
-            parent_dir = os.path.dirname(dir)
+            parent_dir = os.path.dirname(dir_)
             print(
                 f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time},'
                 f' Родительская директория: {parent_dir}')
