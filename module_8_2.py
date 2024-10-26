@@ -14,7 +14,7 @@ def calculate_average(numbers):
     try:
         int_len = 0
         for i in numbers:
-            if isinstance(i, int|float):
+            if isinstance(i, int | float):
                 int_len += 1
             else:
                 continue
