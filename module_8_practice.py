@@ -24,4 +24,7 @@ with open('data.txt', 'r') as file:
         try:
             calc(line)
         except ValueError as exc:
-            print(f'Ошибка в линии {count}, возникло {exc} с параметрами {exc.args}')
+            if 'unpack' in exc.args[0]:
+                print(f'Ошибка в линии {count}, не хватает данных для ответа')
+            else:
+                print(f'Ошибка в линии {count}, нельзя перевести в число')
