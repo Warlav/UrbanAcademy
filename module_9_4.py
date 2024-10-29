@@ -21,8 +21,10 @@ def get_advanced_writer(file_name):
 write = get_advanced_writer('example.txt')
 write('Это строчка', ['А', 'это', 'уже', 'число', 5, 'в', 'списке'])
 
-
+# Метод __call__:
 from random import choice
+
+
 class MysticBall:
     def __init__(self, *words):
         self.words = [*words]
