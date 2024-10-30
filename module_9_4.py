@@ -14,7 +14,6 @@ def get_advanced_writer(file_name):
             for line in data_set:
                 file.write(f'{str(line)}\n')
         return file
-
     return write_everything
 
 
