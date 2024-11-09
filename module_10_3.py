@@ -13,10 +13,10 @@ class Bank:
         while counter:
             dep = randint(50, 500)
             self.balance += dep
-            if self.balance >= 500 and self.lock.locked():
-                self.lock.release()
             print(f'Пополнение: {dep}. Баланс: {self.balance}')
             counter -= 1
+            if self.balance >= 500 and self.lock.locked():
+                self.lock.release()
             sleep(0.001)
 
     def take(self):
