@@ -22,6 +22,7 @@ if __name__ == '__main__':
   start_time = time.time()
   with multiprocessing.Pool() as pool:
     pool.map(read_info, filenames)
+    pool.close()
     pool.join()
   print(time.time() - start_time)
   
