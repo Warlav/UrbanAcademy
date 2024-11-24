@@ -5,7 +5,7 @@ import multiprocessing
 def read_info(name):
   all_data = []
   with open(name, 'r', encoding='utf-8') as file:
-    while file.readline() is not None:
+    while file.readline() == '':
       all_data.append(file.readline())
 
 
