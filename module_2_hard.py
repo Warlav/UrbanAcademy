@@ -6,7 +6,5 @@ for i in range(1, fst_num):
     if fst_num % (i + j) == 0 and i < j:
       snd_num.append(str(i))
       snd_num.append(str(j))
-    else:
-      continue
 print('Первый камень: ', fst_num)
 print('Второй камень: ', ''.join(snd_num))
