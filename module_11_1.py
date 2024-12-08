@@ -1,5 +1,7 @@
 # 1: requests
 from pprint import pprint
+
+import matplotlib
 import requests
 
 r = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
@@ -37,14 +39,19 @@ print()
 # 4: matplotlib
 import matplotlib.pyplot as plt
 
-url1 = 'https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=21/11/2024&date_req2=09/12/2024&VAL_NM_RQ=R01235'
+url1 = 'https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/11/2024&date_req2=09/12/2024&VAL_NM_RQ=R01235'
 data = pd.read_xml(url1)
-print(data['Value'])
-# data = (data.drop(['Id', 'Nominal', 'VunitRate'], axis='columns'))
-fig, axs = plt.subplots()
-axs.plot(data['Date'], data['Value'].T)
-plt.show()
+plt.plot(data['Date'], list(map(float, data['Value'].str.replace(',', '.').tolist())))
+plt.xticks(rotation=45, fontsize=6)
+plt.title('Курс доллара', fontsize=15)
+# plt.show()
 print()
 
 # 5: pillow
-import PIL
+from PIL import Image
+
+bar = Image.open("PingPong/bar.png")
+ball = Image.open("PingPong/ball.png")
+print(bar.size)
+# bar.size = (256, 256)
+# ball.size = (128, 128)
