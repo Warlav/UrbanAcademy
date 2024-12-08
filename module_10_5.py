@@ -3,26 +3,23 @@ import multiprocessing
 
 
 def read_info(name):
-  all_data = []
-  with open(name, 'r') as file:
-    while file.readline() == '':
-      all_data.append(file.readline())
+    all_data = []
+    with open(name, 'r') as file:
+        while file.readline() == '':
+            all_data.append(file.readline())
 
 
 filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
 # Линейный вызов
-start_time = time.time()
-for file in filenames:
-  read_info(file)
-print(time.time() - start_time)
+line_time = time.time()
+for _ in filenames:
+    read_info(_)
+print(time.time() - line_time)
 
 # Многопроцессный
 if __name__ == '__main__':
-  start_time = time.time()
-  with multiprocessing.Pool() as pool:
-    pool.map(read_info, filenames)
-    pool.close()
-    pool.join()
-  print(time.time() - start_time)
-  
+    proc_time = time.time()
+    with multiprocessing.Pool(4) as pool:
+        pool.imap(read_info, filenames)
+    print(time.time() - proc_time)
