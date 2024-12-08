@@ -37,17 +37,13 @@ print()
 # 4: matplotlib
 import matplotlib.pyplot as plt
 
-url1 = 'https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=02/03/2001&date_req2=14/03/2001&VAL_NM_RQ=R01235'
+url1 = 'https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=21/11/2024&date_req2=09/12/2024&VAL_NM_RQ=R01235'
 data = pd.read_xml(url1)
-data = data.drop(['Id', 'Nominal', 'VunitRate'], axis='columns')
-data1 = data.drop(['Date'], axis='columns')
-df = pd.DataFrame(data)
-df_melted = df.melt()
-print(df_melted)
-fig, ax = plt.subplots()
-ax.plot()
-# print(data1)
-# plt.show()
+print(data['Value'])
+# data = (data.drop(['Id', 'Nominal', 'VunitRate'], axis='columns'))
+fig, axs = plt.subplots()
+axs.plot(data['Date'], data['Value'].T)
+plt.show()
 print()
 
 # 5: pillow
