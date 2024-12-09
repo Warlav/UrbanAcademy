@@ -5,11 +5,6 @@ import matplotlib
 import requests
 
 r = requests.get('https://www.cbr-xml-daily.ru/daily_json.js')
-# print('status code: ', r.status_code)
-# print(r.headers['Content-Type'])
-# r.content
-# r.encoding = 'utf-8'
-# print(r.text)
 try:
     print(r.json()['Valute']['USD'])
     print(r.json()['Valute']['EUR'])
@@ -44,7 +39,7 @@ data = pd.read_xml(url1)
 plt.plot(data['Date'], list(map(float, data['Value'].str.replace(',', '.').tolist())))
 plt.xticks(rotation=45, fontsize=6)
 plt.title('Курс доллара', fontsize=15)
-# plt.show()
+plt.show()
 print()
 
 # 5: pillow
@@ -54,3 +49,6 @@ size = (256, 256)
 with Image.open('PingPong/ball.png') as ball:
     print(ball.size)
     ImageOps.cover(ball, size).save('PingPong/ball_cover.png')
+
+with Image.open('PingPong/ball_cover.png') as im:
+    print(im.size)
