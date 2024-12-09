@@ -52,3 +52,7 @@ with Image.open('PingPong/ball.png') as ball:
 
 with Image.open('PingPong/ball_cover.png') as im:
     print(im.size)
+    im.split()
+    R, G, B = 0, 1, 2
+
+im.show()
