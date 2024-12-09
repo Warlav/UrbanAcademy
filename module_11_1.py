@@ -48,10 +48,9 @@ plt.title('Курс доллара', fontsize=15)
 print()
 
 # 5: pillow
-from PIL import Image
+from PIL import Image, ImageOps
 
-bar = Image.open("PingPong/bar.png")
-ball = Image.open("PingPong/ball.png")
-print(bar.size)
-# bar.size = (256, 256)
-# ball.size = (128, 128)
+size = (256, 256)
+with Image.open('PingPong/ball.png') as ball:
+    print(ball.size)
+    ImageOps.cover(ball, size).save('PingPong/ball_cover.png')
