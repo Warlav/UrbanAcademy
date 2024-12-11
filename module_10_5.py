@@ -20,6 +20,6 @@ print(time.time() - line_time)
 # Многопроцессный
 if __name__ == '__main__':
     proc_time = time.time()
-    with multiprocessing.Pool(4) as pool:
+    with multiprocessing.Pool() as pool:
         pool.imap(read_info, filenames)
     print(time.time() - proc_time)
