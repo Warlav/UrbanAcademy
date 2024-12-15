@@ -22,4 +22,3 @@ def introspection_info(obj):
 fourth = Abyr()
 number_info = introspection_info(fourth)
 print(number_info)
-print(fourth.__module__)
