@@ -1,12 +1,25 @@
+import builtins
 import inspect
 
 
+class Abyr:
+    first = 1
+
+    def __init__(self):
+        self.second = 2
+
+    def third(self):
+        pass
+
+
 def introspection_info(obj):
-    print(hasattr(obj, '__name__'))
-    attr = [x for x in dir(obj) if hasattr(obj, x)]
-    meths = [x for x in dir(obj) if callable(x)]
-    return f'type: {type(obj)}, attributes({len(attr)}): {attr}, methods({len(meths)}): {meths}, module: {inspect.getmodule(obj)}'
+    # print(hasattr(obj, '__name__'))
+    meths = [x for x in dir(obj) if inspect.ismethod(x)]
+    return (f'type: {type(obj)}\nattributes({len(dir(obj))}): {dir(obj)}\n'
+            f'methods({len(meths)}): {meths}\nmodule: {inspect.getmodule(obj)}')
 
 
-number_info = introspection_info(42)
+fourth = Abyr()
+number_info = introspection_info(fourth)
 print(number_info)
+print(fourth.__module__)
