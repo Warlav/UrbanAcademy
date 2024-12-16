@@ -18,15 +18,15 @@ def introspection_info(obj):
     return (f'type: {type(obj)}\n'
             f'all attributes and methods({len(dir(obj))}): {dir(obj)}\n'
             f'attributes({len(attrs)}): {attrs}\n'
-            f'attribute values: {[x for x in obj.__dict__.items()]}\n'
+            # f'attribute values: {[x for x in obj.__dict__.items()]}\n'
             f'methods({len(methods)}): {methods}\n'
             f'non dunder methods ({len(non_dunder_methods)}): {non_dunder_methods}\n'
             f'module: {inspect.getmodule(obj)}'
             )
 
 
-# number_info = introspection_info(42)
-# print(number_info)
+number_info = introspection_info(42)
+print(number_info)
 print()
 dog = Abyrvalg()
 print(introspection_info(dog))
