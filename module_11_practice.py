@@ -27,7 +27,7 @@ class Kotleta(Thread):
     def run(self):
         while self.count:
             print(self.queue.qsize())
-            bulka = self.queue.get()
+            bulka = self.queue.get(timeout=2)
             if bulka == 'нормальная булка':
                 time.sleep(random.randint(1, 3))
                 self.count -= 1
