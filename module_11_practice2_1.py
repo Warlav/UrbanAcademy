@@ -8,6 +8,8 @@ RANDOM_GENRE_API_URL = 'https://binaryjazz.us/wp-json/genrenator/v1/genre'
 GENIUS_API_URL = 'https://api.genius.com/search'
 GENIUS_URL = 'https://genius.com'
 
+all_songs = []
+
 
 class GetGenre(Thread):
 
@@ -32,16 +34,26 @@ class Genius(Thread):
         data = data.json()
         try:
             song_id = data['response']['hits'][0]['result']['api_path']
+            all_songs.append(f'{GENIUS_URL}{song_id}/apple_music_player')
         except IndexError as e:
             pass
 
 
 queue = queue.Queue()
-genre_thread = GetGenre(queue)
-genius_thread = Genius(queue)
+genre_list = []
+genius_list = []
+for _ in range(10):
+    t = GetGenre(queue)
+    t.start()
+    genre_list.append(t)
 
-genre_thread.start()
-genius_thread.start()
+for _ in range(10):
+    t = Genius(queue)
+    t.start()
+    genius_list.append(t)
 
-genre_thread.join()
-genius_thread.join()
+for t in genius_list:
+    t.join()
+
+print(all_songs)
+print(len(all_songs))
