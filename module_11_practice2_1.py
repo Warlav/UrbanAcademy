@@ -71,4 +71,4 @@ for t in genius_list:
 
 stop_event.set()
 pprint(Genius.all_songs)
-print(len(Genius.all_songs))
+end = datetime.datetime.now()
