@@ -36,6 +36,7 @@ class Genius(Thread):
             song_id = data['response']['hits'][0]['result']['api_path']
             all_songs.append(f'{GENIUS_URL}{song_id}/apple_music_player')
         except IndexError as e:
+            self.run()
             pass
 
 
