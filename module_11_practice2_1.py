@@ -56,7 +56,7 @@ counter = 10
 genre_list = []
 genius_list = []
 
-for _ in range(6):
+for _ in range(10):
     t = GetGenre(queue, stop_event)
     t.start()
     genre_list.append(t)
