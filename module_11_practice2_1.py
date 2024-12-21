@@ -1,6 +1,6 @@
 import requests
 import pprint
-from threading import Thread
+from threading import Thread, Event
 import queue
 
 ACCESS_TOKEN = 'CXyFeSBw2lAdG41xkuU3LS6a_nwyxwwCz2dCkUohw-rw0C49x2HqP__6_4is5RPx'
@@ -13,13 +13,15 @@ all_songs = []
 
 class GetGenre(Thread):
 
-    def __init__(self, queue):
+    def __init__(self, queue, stop_event):
         self.queue = queue
+        self.stop_event = stop_event
         super().__init__()
 
     def run(self):
-        genre = requests.get(RANDOM_GENRE_API_URL).json()
-        self.queue.put(genre)
+        while not stop_event.is_set():
+            genre = requests.get(RANDOM_GENRE_API_URL).json()
+            self.queue.put(genre)
 
 
 class Genius(Thread):
@@ -41,6 +43,8 @@ class Genius(Thread):
 
 
 queue = queue.Queue()
+stop_event = Event()
+
 genre_list = []
 genius_list = []
 for _ in range(10):
@@ -55,6 +59,11 @@ for _ in range(10):
 
 for t in genius_list:
     t.join()
+stop_event.set()
 
+for t in genre_list:
+    t.join()
+
+print(queue.qsize())
 print(all_songs)
 print(len(all_songs))
