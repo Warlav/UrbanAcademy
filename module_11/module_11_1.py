@@ -46,11 +46,11 @@ print()
 from PIL import Image, ImageOps
 
 size = (256, 256)
-with Image.open('PingPong/ball.png') as ball:
+with Image.open('../PingPong/ball.png') as ball:
     print(ball.size)
-    ImageOps.cover(ball, size).save('PingPong/ball_cover.png')
+    ImageOps.cover(ball, size).save('../PingPong/ball_cover.png')
 
-with Image.open('PingPong/ball_cover.png') as im:
+with Image.open('../PingPong/ball_cover.png') as im:
     print(im.size)
     im = im.convert('L')
 
