@@ -55,7 +55,7 @@ stop_event = Event()
 counter = 10
 genre_list = []
 genius_list = []
-start = datetime.datetime.now()
+
 for _ in range(6):
     t = GetGenre(queue, stop_event)
     t.start()
@@ -69,6 +69,4 @@ for _ in range(10):
 for t in genius_list:
     t.join()
 
-stop_event.set()
 pprint(Genius.all_songs)
-end = datetime.datetime.now()
