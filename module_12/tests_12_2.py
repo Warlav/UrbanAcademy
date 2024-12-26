@@ -15,7 +15,7 @@ class TournamentTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        {print(f'{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
+        {print(f'\n{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
 
     def test_zabeg_1(self):
         run = runner_and_tournament.Tournament(90, self.runner_1, self.runner_3).start()
@@ -35,9 +35,9 @@ class TournamentTest(unittest.TestCase):
         keys = list(run.keys())
         self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
-    def test_zabeg_4(self):
+    def test_zabeg_fail(self):
         run = runner_and_tournament.Tournament(6, self.runner_1, self.runner_2, self.runner_3).start()
-        TournamentTest.all_results['test_zabeg_4'] = run
+        TournamentTest.all_results['test_zabeg_fail'] = run
         keys = list(run.keys())
         self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
