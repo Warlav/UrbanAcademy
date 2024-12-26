@@ -1,5 +1,6 @@
 import unittest
 import runner_and_tournament
+from pprint import pprint
 
 
 class TournamentTest(unittest.TestCase):
@@ -12,24 +13,33 @@ class TournamentTest(unittest.TestCase):
         self.runner_2 = runner_and_tournament.Runner('Андрей', 9)
         self.runner_3 = runner_and_tournament.Runner('Ник', 3)
 
-    def tearDownClass(self):
-        return [print(i) for i in TournamentTest.all_results]
+    @classmethod
+    def tearDownClass(cls):
+        {print(f'{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
 
-    def zabeg_1(self):
+    def test_zabeg_1(self):
         run = runner_and_tournament.Tournament(90, self.runner_1, self.runner_3).start()
-        TournamentTest.all_results.update(run)
-        self.assertTrue(self.all_results[-1].value == self.runner_3.name)
+        TournamentTest.all_results['test_zabeg_1'] = run
+        keys = list(run.keys())
+        self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
-    def zabeg_2(self):
+    def test_zabeg_2(self):
         run = runner_and_tournament.Tournament(90, self.runner_2, self.runner_3).start()
-        TournamentTest.all_results.update(run)
-        self.assertTrue(self.all_results[-1].value == self.runner_3.name)
+        TournamentTest.all_results['test_zabeg_2'] = run
+        keys = list(run.keys())
+        self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
-    def zabeg_3(self):
+    def test_zabeg_3(self):
         run = runner_and_tournament.Tournament(90, self.runner_1, self.runner_2, self.runner_3).start()
-        TournamentTest.all_results.update(run)
-        self.all_results = sorted(self.all_results)
-        self.assertTrue(self.all_results[-1].value == self.runner_3.name)
+        TournamentTest.all_results['test_zabeg_3'] = run
+        keys = list(run.keys())
+        self.assertTrue(run[keys[-1]].name == self.runner_3.name)
+
+    def test_zabeg_4(self):
+        run = runner_and_tournament.Tournament(6, self.runner_1, self.runner_2, self.runner_3).start()
+        TournamentTest.all_results['test_zabeg_4'] = run
+        keys = list(run.keys())
+        self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
 
 if __name__ == '__main__':
