@@ -8,16 +8,19 @@ class RunnerTest(unittest.TestCase):
     def setUpClass(cls):
         cls.is_frozen = False
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         walker = Runner('Stepan')
         [walker.walk() for i in range(10)]
         self.assertEqual(walker.distance, 50)
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         walker = Runner('Stepan')
         [walker.run() for i in range(10)]
         self.assertEqual(walker.distance, 100)
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         walker_1 = Runner('Stepan')
         walker_2 = Runner('Oleg')
@@ -41,24 +44,28 @@ class TournamentTest(unittest.TestCase):
     def tearDownClass(cls):
         {print(f'\n{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_zabeg_1(self):
         run = runner_and_tournament.Tournament(90, self.runner_1, self.runner_3).start()
         TournamentTest.all_results['test_zabeg_1'] = run
         keys = list(run.keys())
         self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_zabeg_2(self):
         run = runner_and_tournament.Tournament(90, self.runner_2, self.runner_3).start()
         TournamentTest.all_results['test_zabeg_2'] = run
         keys = list(run.keys())
         self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_zabeg_3(self):
         run = runner_and_tournament.Tournament(90, self.runner_1, self.runner_2, self.runner_3).start()
         TournamentTest.all_results['test_zabeg_3'] = run
         keys = list(run.keys())
         self.assertTrue(run[keys[-1]].name == self.runner_3.name)
 
+    @unittest.skipIf(cls.is_frozen, 'Тесты в этом кейсе заморожены')
     def test_zabeg_fail(self):
         run = runner_and_tournament.Tournament(6, self.runner_1, self.runner_2, self.runner_3).start()
         TournamentTest.all_results['test_zabeg_fail'] = run

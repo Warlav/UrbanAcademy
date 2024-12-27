@@ -19,3 +19,7 @@ class RunnerTest(unittest.TestCase):
         [walker_1.walk() for i in range(10)]
         [walker_2.run() for i in range(10)]
         self.assertNotEqual(walker_1.distance, walker_2.distance)
+
+
+if __name__ == '__main__':
+    unittest.main()
