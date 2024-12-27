@@ -59,26 +59,30 @@ class RunnerTest(unittest.TestCase):
     def test_walk(self):
         try:
             walker = Runner('Stepan', -5)
-        except ValueError as err:
-            logging.error('Включил заднюю пешеходную')
+        except ValueError:
+            logging.warning('Неверная скорость для Runner', exc_info=True)
         else:
-            [walker.walk() for i in range(10)]
+            [walker.walk() for _ in range(10)]
             self.assertEqual(walker.distance, 50)
-            logging.info('"test_walk" выполнен успешно')
-
+            logging.info('"test_walk" выполнен успешно', exc_info=True)
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
-        walker = Runner('Stepan')
-        [walker.run() for i in range(10)]
-        self.assertEqual(walker.distance, 100)
+        try:
+            walker = Runner(3)
+        except TypeError:
+            logging.warning('Неверный тип данных для объекта Runner', exc_info=True)
+        else:
+            [walker.run() for _ in range(10)]
+            self.assertEqual(walker.distance, 100)
+            logging.info('"test_run" выполнен успешно', exc_info=True)
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         walker_1 = Runner('Stepan')
         walker_2 = Runner('Oleg')
-        [walker_1.walk() for i in range(10)]
-        [walker_2.run() for i in range(10)]
+        [walker_1.walk() for _ in range(10)]
+        [walker_2.run() for _ in range(10)]
         self.assertNotEqual(walker_1.distance, walker_2.distance)
 
 
@@ -91,5 +95,5 @@ class RunnerTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level='INFO', filename='runner_tests.log', filemode='w', encoding='utf-8',
+    logging.basicConfig(level='INFO', filemode='w', filename='runner_tests.log', encoding='utf-8',
                         format='%(asctime)s | %(levelname)s | %(message)')

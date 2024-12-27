@@ -14,6 +14,9 @@ class TournamentTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # for i, j in cls.all_results.items():
+        #     print(f'\n{i}:')
+        #     [print(f'{k}: ', v) for k, v in j.items()]
         {print(f'\n{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
 
     def test_zabeg_1(self):

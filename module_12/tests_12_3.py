@@ -9,21 +9,21 @@ class RunnerTest(unittest.TestCase):
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         walker = Runner('Stepan')
-        [walker.walk() for i in range(10)]
+        [walker.walk() for _ in range(10)]
         self.assertEqual(walker.distance, 50)
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         walker = Runner('Stepan')
-        [walker.run() for i in range(10)]
+        [walker.run() for _ in range(10)]
         self.assertEqual(walker.distance, 100)
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         walker_1 = Runner('Stepan')
         walker_2 = Runner('Oleg')
-        [walker_1.walk() for i in range(10)]
-        [walker_2.run() for i in range(10)]
+        [walker_1.walk() for _ in range(10)]
+        [walker_2.run() for _ in range(10)]
         self.assertNotEqual(walker_1.distance, walker_2.distance)
 
 
@@ -41,6 +41,9 @@ class TournamentTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # for i, j in cls.all_results.items():
+        #     print(f'\n{i}:')
+        #     [print(f'{k}: ', v) for k, v in j.items()]
         {print(f'\n{i}:'): [print(f'{k}: ', v) for k, v in j.items()] for i, j in cls.all_results.items()}
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
