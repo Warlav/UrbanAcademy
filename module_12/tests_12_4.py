@@ -59,23 +59,25 @@ class RunnerTest(unittest.TestCase):
     def test_walk(self):
         try:
             walker = Runner('Stepan', -5)
-        except ValueError:
-            logging.warning('Неверная скорость для Runner', exc_info=True)
-        else:
+            logging.info('"test_walk" выполнен успешно')
             [walker.walk() for _ in range(10)]
             self.assertEqual(walker.distance, 50)
-            logging.info('"test_walk" выполнен успешно', exc_info=True)
+        except ValueError:
+            logging.warning('Неверная скорость для Runner', exc_info=True)
+        # else:
+
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         try:
             walker = Runner(3)
-        except TypeError:
-            logging.warning('Неверный тип данных для объекта Runner', exc_info=True)
-        else:
+            logging.info('"test_run" выполнен успешно')
             [walker.run() for _ in range(10)]
             self.assertEqual(walker.distance, 100)
-            logging.info('"test_run" выполнен успешно', exc_info=True)
+        except TypeError:
+            logging.warning('Неверный тип данных для объекта Runner', exc_info=True)
+        # else:
+
 
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
@@ -93,9 +95,7 @@ third = Runner('Арсен', 10)
 t = Tournament(101, first, second)
 print(t.start())
 
-
 if __name__ == '__main__':
+    unittest.main()
     logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log',
                         encoding='utf-8', format='%(asctime)s - %(levelname)s : %(message)s')
-    logging.root.setLevel(logging.NOTSET)
-    unittest.main()
