@@ -86,12 +86,12 @@ class RunnerTest(unittest.TestCase):
         self.assertNotEqual(walker_1.distance, walker_2.distance)
 
 
-# first = Runner('Вося', 10)
-# second = Runner('Илья', 5)
-# third = Runner('Арсен', 10)
-#
-# t = Tournament(101, first, second)
-# print(t.start())
+first = Runner('Вася', 10)
+second = Runner('Илья', 5)
+third = Runner('Арсен', 10)
+
+t = Tournament(101, first, second)
+print(t.start())
 
 
 if __name__ == '__main__':
