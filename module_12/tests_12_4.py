@@ -86,14 +86,13 @@ class RunnerTest(unittest.TestCase):
         self.assertNotEqual(walker_1.distance, walker_2.distance)
 
 
-first = Runner('Вася', 10)
-second = Runner('Илья', 5)
-third = Runner('Арсен', 10)
-
-t = Tournament(101, first, second)
-print(t.start())
+# first = Runner('Вася', 10)
+# second = Runner('Илья', 5)
+# third = Runner('Арсен', 10)
+#
+# t = Tournament(101, first, second)
+# print(t.start())
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log',
                         encoding='utf-8', format='%(asctime)s - %(levelname)s : %(message)s')
-    unittest.main()
