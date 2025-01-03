@@ -1,6 +1,9 @@
 import logging
 import unittest
 
+logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log',
+                    encoding='utf-8', format='%(asctime)s - %(levelname)s : %(message)s')
+
 
 class Runner:
     def __init__(self, name, speed=5):
@@ -93,8 +96,6 @@ class RunnerTest(unittest.TestCase):
 # t = Tournament(101, first, second)
 # print(t.start())
 
-logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log',
-                    encoding='utf-8', format='%(asctime)s - %(levelname)s : %(message)s')
 
 if __name__ == '__main__':
     unittest.main()
