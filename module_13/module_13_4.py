@@ -9,11 +9,6 @@ bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
-# @dp.message_handler(text=['Привет', 'привет', 'Hi', 'hi', 'Hello', 'hello'])
-# async def hi_message(message):
-#     print('Получили привет')
-#     await message.answer(message.text)
-
 class UserState(StatesGroup):
     age = State()
     growth = State()
