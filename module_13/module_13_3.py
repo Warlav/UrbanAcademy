@@ -15,11 +15,13 @@ async def hi_message(message):
 @dp.message_handler(commands=['start'])
 async def start(message):
     print('Привет! Я бот помогающий твоему здоровью.')
+    await message.answer('Рады вас видеть в нашем боте.')
 
 
 @dp.message_handler()
 async def all_massages(message):
     print('Введите команду /start, чтобы начать общение.')
+    await message.answer(message.text)
 
 
 if __name__ == '__main__':
