@@ -6,6 +6,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 
 from config import *
 from keyboards import *
+from admin import *
+from db import *
 import texts
 
 logging.basicConfig(level=logging.INFO)
