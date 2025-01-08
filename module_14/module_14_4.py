@@ -47,7 +47,6 @@ class UserState(StatesGroup):
     age = State()
     growth = State()
     weight = State()
-    choosed_product = State()
 
 
 @dp.message_handler(commands=['start'])
