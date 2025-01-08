@@ -16,7 +16,6 @@ block INT
 
 def add_user(user_id, username, first_name):
     check_user = cursor.execute('SELECT * FROM Users WHERE id =?', (user_id,))
-
     if check_user.fetchone() is None:
         cursor.execute(f'''
 INSERT INTO Users VALUES (f{user_id}, f{username}, f{first_name}, 0)
