@@ -8,18 +8,18 @@ cursor = connection.cursor()
 def initiate_db():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS Products(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     description TEXT,
-    price INT NOT NULL
+    price INTEGER NOT NULL
     )
     ''')
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS Users(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
     email TEXT NOT NULL,
-    age INT NOT NULL,
+    age INTEGER NOT NULL,
     balance INT NOT NULL
     )
     ''')
@@ -31,9 +31,8 @@ def initiate_db():
 def add_product(title, description, price):
     check_title = cursor.execute('SELECT * FROM Products WHERE title = ?', (title,))
     if check_title.fetchone() is None:
-        cursor.execute(f'''
-        INSERT INTO Products VALUES ({title}, {description}, {price})
-''')
+        cursor.execute('INSERT INTO Products (title, description, price) VALUES (?, ?, ?)',
+                       (title, description, price))
     connection.commit()
 
 
@@ -63,4 +62,7 @@ def is_included(username):
         return False
 
 
+initiate_db()
+for i in range(1, 5):
+    add_product(f'Цифра {i}', f'цифра {i}', f'{i * 100}')
 connection.commit()
