@@ -13,8 +13,9 @@ kb = ReplyKeyboardMarkup(resize_keyboard=True)
 button = KeyboardButton(text='Рассчитать')
 button_1 = KeyboardButton(text='Информация')
 button_2 = KeyboardButton(text='Купить')
+button_3 = KeyboardButton(text='Регистрация')
 kb.add(button, button_1)
-kb.add(button_2)
+kb.add(button_2, button_3)
 
 in_kb = InlineKeyboardMarkup(resize_keybord=True)
 in_button_1 = InlineKeyboardButton('Рассчитать норму калорий', callback_data='calories')
@@ -47,6 +48,13 @@ class UserState(StatesGroup):
     age = State()
     growth = State()
     weight = State()
+
+
+class RegistrationState(StatesGroup):
+    username = State()
+    email = State()
+    age = State()
+    balance = State()
 
 
 @dp.message_handler(commands=['start'])
@@ -103,6 +111,39 @@ async def get_buying_list(message):
 async def send_confirm_message(call):
     await call.message.answer('Вы успешно приобрели продукт!')
     await call.answer()
+
+
+@dp.message_handler(text='Регистрация')
+async def sing_up(message):
+    await message.answer('Введите имя пользователя (только латинский алфавит):')
+    await RegistrationState.username.set()
+
+
+@dp.message_handler(state=RegistrationState.username)
+async def set_username(message, state):
+    if not is_included(message.text):
+        await state.update_data(username=message.text)
+        await message.answer('Введите свой email:')
+        await RegistrationState.email.set()
+    else:
+        await message.answer('Пользователь существует. Введите другое имя.')
+        await sing_up()
+
+
+@dp.message_handler(state=RegistrationState.email)
+async def set_email(message, state):
+    await state.update_data(email=message.text)
+    await message.answer('Введите свой возраст:')
+    await RegistrationState.age.set()
+
+
+@dp.message_handler(state=RegistrationState.age)
+async def set_age(message, state):
+    await state.update_data(age=message.text)
+    data = await state.get_data()
+    add_user(*data.values())
+    await message.answer('Регистрация прошла успешно')
+    await state.finish()
 
 
 @dp.message_handler()

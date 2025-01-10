@@ -4,6 +4,7 @@ connection = sqlite3.connect('products.db')
 cursor = connection.cursor()
 
 
+# Создание таблиц:
 def initiate_db():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS Products(
@@ -25,13 +26,15 @@ def initiate_db():
     connection.commit()
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# Раздел продуктов:
 def add_product(title, description, price):
-    check_title = cursor.execute('SELECT * FROM Products WHERE title =?', (title,))
+    check_title = cursor.execute('SELECT * FROM Products WHERE title = ?', (title,))
     if check_title.fetchone() is None:
         cursor.execute(f'''
-INSERT INTO Products VALUES ({title}, {description}, {price})
+        INSERT INTO Products VALUES ({title}, {description}, {price})
 ''')
-        connection.commit()
+    connection.commit()
 
 
 def get_all_products():
@@ -42,13 +45,22 @@ def get_all_products():
     return products
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# Раздел пользователей:
 def add_user(username, email, age):
-    check_title = cursor.execute('SELECT * FROM Products WHERE title =?', (username,))
-    if check_title.fetchone() is None:
-        cursor.execute(f'''
-    INSERT INTO Products VALUES ({username}, {email}, {age}, 1000)
-    ''')
-        connection.commit()
+    if not is_included(username):
+        cursor.execute('INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ?)',
+                       (username, email, age, 1000))
+    connection.commit()
+
+
+def is_included(username):
+    check_user = cursor.execute('SELECT username FROM Users WHERE username = ?', (username,))
+    connection.commit()
+    if check_user.fetchone() is not None:
+        return True
+    else:
+        return False
 
 
 connection.commit()
